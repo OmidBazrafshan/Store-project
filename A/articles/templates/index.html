@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+
+
+<section id="gallery" class="cases flex-grid section-padding">
+    <div class="row" style="width: fix;">
+        {% for article in articles %}
+        <div class="column" >
+            {% if article.image %}
+                <h2>{{article.title}}</h2>
+                <h3>{{article.price}}$</h3>
+                <h2>{{article.discription}}</h2>
+                <a href="{% url 'Retrieve' id=article.id %}" data-lightbox="cases" data-title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, sed.">
+
+                    <img src="{{article.image.url}}" style="width: 300px;">
+
+                {% endif %}    
+            
+        </div>
+        {% endfor  %}   
+    </div>
+    </section>
+
+{% endblock %}
