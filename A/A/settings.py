@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'articles',
     'accounts',
+    'azbankgateways',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,23 @@ EMAIL_HOST_USER ='itteamomid@gmail.com'
 EMAIL_HOST_PASSWORD = 'itteam1234'
 
 DEFAULT_FROM_EMAIL = 'testmail@gmail.com'
+
+
+
+AZ_IRANIAN_BANK_GATEWAYS = {
+   'GATEWAYS': {
+       'ZARINPAL': {
+           'MERCHANT_CODE': '<YOUR MERCHANT CODE>',
+           'SANDBOX': 0,  # 0 disable, 1 active
+       },
+   },
+   'IS_SAMPLE_FORM_ENABLE': True, # اختیاری و پیش فرض غیر فعال است
+   'DEFAULT': 'ZARINPAL',
+   'CURRENCY': 'IRR', # اختیاری
+   'TRACKING_CODE_QUERY_PARAM': 'tc', # اختیاری
+   'TRACKING_CODE_LENGTH': 16, # اختیاری
+   'SETTING_VALUE_READER_CLASS': 'azbankgateways.readers.DefaultReader', # اختیاری
+   'BANK_PRIORITIES': [
+
+   ],
+}
